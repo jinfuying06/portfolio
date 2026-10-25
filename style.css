@@ -195,7 +195,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .thumbs.steps .thumb { grid-column: span 2; }
 .thumbs.steps .thumb:nth-child(4) { grid-column: 2 / span 2; }
 .thumbs.steps .thumb:nth-child(5) { grid-column: 4 / span 2; }
-.thumbs.steps .thumb img { aspect-ratio: 530 / 369; }
+.thumbs.steps .thumb img { aspect-ratio: 16 / 10; }
 .thumb { display: flex; flex-direction: column; }
 .thumb img { aspect-ratio: 4 / 3; object-fit: cover; object-position: top; }
 .thumb span { padding: 7px 10px; font-size: var(--fz-xxs); font-weight: 600; color: var(--text-2); background: var(--bg); border-top: 1px solid var(--line); transition: var(--transition); }
