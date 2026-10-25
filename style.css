@@ -191,11 +191,9 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .zoomable:hover img { transform: scale(1.025); }
 .thumbs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 12px; }
 .thumbs:has(> :nth-child(4)) { grid-template-columns: repeat(4, 1fr); }
-.thumbs.steps { grid-template-columns: repeat(6, 1fr); margin-top: 0; margin-bottom: 10px; }
-.thumbs.steps .thumb { grid-column: span 2; }
-.thumbs.steps .thumb:nth-child(4) { grid-column: 2 / span 2; }
-.thumbs.steps .thumb:nth-child(5) { grid-column: 4 / span 2; }
+.thumbs.steps { grid-template-columns: repeat(3, 1fr); margin-top: 0; }
 .thumbs.steps .thumb img { aspect-ratio: 16 / 10; }
+.thumb span .ai-badge { margin: 0 0 0 6px; }
 .thumb { display: flex; flex-direction: column; }
 .thumb img { aspect-ratio: 4 / 3; object-fit: cover; object-position: top; }
 .thumb span { padding: 7px 10px; font-size: var(--fz-xxs); font-weight: 600; color: var(--text-2); background: var(--bg); border-top: 1px solid var(--line); transition: var(--transition); }
