@@ -10,7 +10,7 @@
 <meta name="robots" content="noindex, nofollow, noarchive">
 <meta property="og:type" content="website">
 <meta property="og:title" content="김보영 | 서비스 기획자 포트폴리오">
-<meta property="og:description" content="직접 구현해 본 사람의 기획, 화면 뒤의 예외와 정책까지 설계합니다. 뽀득뽀득 · 두잇킷 · Genie 챗봇 PoC.">
+<meta property="og:description" content="직접 구현해 본 사람의 기획, 화면 뒤의 예외와 정책까지 설계합니다. 뽀득뽀득 · 두잇킷 · 삼국지 데이터 원정대 · Genie 챗봇 PoC.">
 <meta property="og:locale" content="ko_KR">
 <!-- 배포 후 실제 주소로 바꿔주세요 -->
 <!-- <meta property="og:url" content="https://jinfuying06.github.io/"> -->
@@ -95,6 +95,7 @@
           <h3 class="job-title">서비스기획 과정 <span class="company">@ 성남여성인력센터</span></h3>
           <p class="job-period">2026.07 – 2026.10</p>
           <ul class="career-list">
+            <li class="is-link"><a href="#samguk"><strong>삼국지 데이터 원정대 — 데이터 분석 학습 웹앱</strong><span class="when">2026.10</span><p>Projects에서 자세히 보기 <span class="arrow" aria-hidden="true">→</span></p></a></li>
             <li class="is-link"><a href="#doitkit"><strong>두잇킷 — AI 기반 브랜디드 게임 캠페인 SaaS</strong><span class="when">2026.10</span><p>Projects에서 자세히 보기 <span class="arrow" aria-hidden="true">→</span></p></a></li>
             <li class="is-link"><a href="#bbodeuk"><strong>뽀득뽀득 — 청소 기록 서비스</strong><span class="when">2026.09</span><p>Projects에서 자세히 보기 <span class="arrow" aria-hidden="true">→</span></p></a></li>
           </ul>
@@ -190,6 +191,39 @@
         <div class="project-links reveal">
           <a class="btn btn-solid" href="https://jinfuying06.github.io/doitkit/" target="_blank" rel="noopener">프로토타입 ↗</a>
           <a class="btn" href="#" data-latest-pdf="doitkit" target="_blank" rel="noopener" aria-disabled="true">PRD 보기</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- 삼국지 데이터 원정대 -->
+    <article class="project" id="samguk">
+      <header class="project-head">
+        <p class="project-overline reveal">2026.10 · 개인 프로젝트 · PRD·프로토타입 제작</p>
+        <h3 class="project-title reveal">삼국지 데이터 원정대</h3>
+        <p class="project-desc reveal">적벽대전의 기록으로 데이터 분석을 배우는 학습 웹앱. 아는 이야기로 분석의 순서를 익히고, 조건을 바꿔 가정을 실험해 봅니다.</p>
+      </header>
+      <figure class="project-media reveal">
+        <div class="thumbs screens">
+          <button class="zoomable thumb" data-full="assets/img/samguk-home.jpg"><img src="assets/img/samguk-home.jpg" alt="홈 화면: '만약 제갈량이 조조의 편이었다면?' 질문과 예상 고르기" loading="lazy"><span>홈</span></button>
+          <button class="zoomable thumb" data-full="assets/img/samguk-learn.jpg"><img src="assets/img/samguk-learn.jpg" alt="분석 학습 화면: 세 진영의 평균 등장 횟수를 비교하는 평균의 함정" loading="lazy"><span>분석 학습</span></button>
+          <button class="zoomable thumb" data-full="assets/img/samguk-evidence.jpg"><img src="assets/img/samguk-evidence.jpg" alt="근거 확인 화면: '불' 글자와 함께 나온 횟수와 원문 확인" loading="lazy"><span>근거 확인</span></button>
+          <button class="zoomable thumb" data-full="assets/img/samguk-whatif.jpg"><img src="assets/img/samguk-whatif.jpg" alt="가정 실험 화면: 질문 9개를 3단계로 고르기" loading="lazy"><span>가정 실험</span></button>
+        </div>
+      </figure>
+      <div class="project-text">
+        <div class="points reveal">
+          <p class="points-label">기획 포인트</p>
+          <ul class="tick-list">
+            <li><strong>아는 이야기에서 시작</strong>: 적벽대전처럼 이미 아는 이야기로 시작해, 용어보다 “만약 제갈량이 조조 편이었다면?” 같은 질문이 먼저 떠오르게 함</li>
+            <li>인물이 나온 문단과 전투·화공·계책 글자를 직접 세어 숫자로 바꾸고, 숫자가 나온 원문을 바로 확인하며 <strong>숫자가 곧 능력은 아니라는 한계</strong>도 스스로 찾음</li>
+            <li>질문 하나를 <strong>6개의 순서</strong>(명단 정하기 → 평균의 함정 → 지표 만들기 → 민감도 확인 → 근거 확인 → 가정 실험)로 풀며 분석 개념을 익힘. 각 순서는 사례 → 해 보기 → 결과 → 이름 순이라 용어가 먼저 나오지 않음</li>
+            <li><strong>가정 실험(What-if)</strong>: 질문 9개를 3단계로 골라 조건을 바꿔 비교하며, 분석이 정답 찾기가 아니라 근거로 비교하는 일임을 경험. 활동을 마쳐야 확인 문제를 풀고, 틀리면 정답 대신 근거를 다시 보여 줌</li>
+          </ul>
+        </div>
+        <ul class="tech-list reveal"><li>서비스 기획</li><li>데이터 분석 학습</li><li>학습 설계</li><li>PRD</li></ul>
+        <div class="project-links reveal">
+          <a class="btn btn-solid" href="https://claude.ai/artifact/Lncrdrqwfxnqt2TCWqEeeU" target="_blank" rel="noopener">프로토타입 ↗</a>
+          <a class="btn" href="#" data-latest-pdf="samguk" target="_blank" rel="noopener" aria-disabled="true">PRD 보기</a>
         </div>
       </div>
     </article>

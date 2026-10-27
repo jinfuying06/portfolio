@@ -24,6 +24,11 @@ const documents = [
     label: 'doitkit PRD',
     matches: (name) => name.includes('\ub450\uc787\ud0b7') && name.toLowerCase().includes('prd'),
   },
+  {
+    key: 'samguk',
+    label: 'samguk PRD',
+    matches: (name) => name.includes('\uc0bc\uad6d\uc9c0') && name.toLowerCase().includes('prd'),
+  },
 ];
 
 function dateFromName(name) {

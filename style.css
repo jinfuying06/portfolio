@@ -193,6 +193,8 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .thumbs:has(> :nth-child(4)) { grid-template-columns: repeat(4, 1fr); }
 .thumbs.steps { grid-template-columns: repeat(3, 1fr); margin-top: 0; }
 .thumbs.steps .thumb img { aspect-ratio: 16 / 10; }
+.thumbs.screens { grid-template-columns: repeat(4, 1fr); margin-top: 0; }
+.thumbs.screens .thumb img { aspect-ratio: 361 / 781; }
 .thumb span .ai-badge { margin: 0 0 0 6px; }
 .thumb { display: flex; flex-direction: column; }
 .thumb img { aspect-ratio: 4 / 3; object-fit: cover; object-position: top; }
@@ -494,7 +496,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   .flow-node small { font-size: 7.5pt; }
 
   #projects { break-before: page; }
-  .project:nth-of-type(4) { break-before: avoid; margin-top: 6mm; }
+  .project:nth-of-type(5) { break-before: avoid; margin-top: 6mm; }
   .project.is-wide { display: block !important; }
   .project.is-wide { break-inside: auto !important; }
   .project-group { display: block; font-size: 14pt; margin-bottom: 6mm; padding-bottom: 2mm; break-after: avoid; }
