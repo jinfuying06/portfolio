@@ -77,12 +77,12 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .logo:hover { transform: translateY(-5px) rotate(5deg); box-shadow: 0 10px 30px -15px var(--ink); }
 
 .nav-links {
-  display: flex; flex-direction: column; gap: 64px;
+  display: flex; flex-direction: column; gap: 64px; margin-top: 120px;
 }
 .nav-link {
   position: relative; display: block; padding: 10px;
   writing-mode: vertical-rl; text-orientation: mixed;
-  color: var(--text-3); font-family: var(--font-num); font-size: var(--fz-md);
+  color: var(--text-3); font-family: var(--font-num); font-size: var(--fz-xs);
   letter-spacing: 0.2em; text-decoration: none; transition: var(--transition);
 }
 .nav-link::after {
@@ -403,8 +403,8 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   }
   .sidebar { justify-content: center; }
   .logo { height: 36px; padding: 0 12px; font-size: 11px; flex-shrink: 0; }
-  .nav-links { flex: 1; flex-direction: row; justify-content: space-around; gap: 0; }
-  .nav-link { writing-mode: horizontal-tb; font-size: var(--fz-sm); letter-spacing: 0.08em; padding: 10px 8px; white-space: nowrap; }
+  .nav-links { flex: 1; flex-direction: row; justify-content: space-around; gap: 0; margin-top: 0; }
+  .nav-link { writing-mode: horizontal-tb; font-size: 12px; letter-spacing: 0.08em; padding: 10px 8px; white-space: nowrap; }
   .nav-link::after { display: none; }
   .main-wrapper { margin-left: 0; margin-bottom: 60px; }
 
