@@ -33,6 +33,8 @@ jobs:
         run: |
           mkdir _site
           cp -r index.html style.css script.js assets _site/
+          # Stable links for outside documents (e.g. slides): /pdf/<key>.pdf always serves the latest file
+          node -e "const fs=require('fs');const m=require('./assets/pdf/latest.json');fs.mkdirSync('_site/pdf');for(const[k,f]of Object.entries(m))fs.copyFileSync('assets/pdf/'+f,'_site/pdf/'+k+'.pdf')"
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
