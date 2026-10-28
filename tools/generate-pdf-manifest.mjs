@@ -1,3 +1,4 @@
+import { execFileSync } from 'node:child_process';
 import { open, readdir, stat, writeFile } from 'node:fs/promises';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -6,7 +7,7 @@ const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const pdfDir = join(root, 'assets', 'pdf');
 const manifestPath = join(pdfDir, 'latest.json');
 
-// Match document categories, not complete filenames, so newer upt-dated uploads
+// Match document categories, not complete filenames, so newer uploads
 // are picked up without changing code. Unicode escapes keep this source portable.
 const documents = [
   {
@@ -31,12 +32,14 @@ const documents = [
   },
 ];
 
-function dateFromName(name) {
-  const match = name.match(/^upt[_-]?(\d{8}|\d{6})(?:[_-]|$)/i);
-  if (!match) return 0;
-
-  const value = match[1];
-  return Number(value.length === 8 ? value : `20${value}`);
+// Checkout resets mtimes in CI, so prefer the last commit time; uncommitted files fall back to mtime.
+function committedAt(path) {
+  try {
+    const out = execFileSync('git', ['log', '-1', '--format=%ct', '--', path], { cwd: root, encoding: 'utf8' }).trim();
+    return out ? Number(out) * 1000 : 0;
+  } catch {
+    return 0;
+  }
 }
 
 async function isPdf(path) {
@@ -57,21 +60,20 @@ for (const document of documents) {
   const candidates = [];
 
   for (const name of names) {
-    if (!/^upt/i.test(name) || !name.toLowerCase().endsWith('.pdf') || !document.matches(name)) continue;
+    if (!name.toLowerCase().endsWith('.pdf') || !document.matches(name)) continue;
 
     const path = join(pdfDir, name);
     const info = await stat(path);
-    candidates.push({ name, path, date: dateFromName(name), modified: info.mtimeMs });
+    candidates.push({ name, path, modified: committedAt(path) || info.mtimeMs });
   }
 
   candidates.sort((a, b) =>
-    b.date - a.date ||
     b.modified - a.modified ||
     b.name.localeCompare(a.name, 'ko', { numeric: true }),
   );
 
   const latest = candidates[0];
-  if (!latest) throw new Error(`${document.label}: no matching upt-dated PDF found`);
+  if (!latest) throw new Error(`${document.label}: no matching PDF found`);
   if (!(await isPdf(latest.path))) throw new Error(`${latest.name}: invalid PDF signature`);
 
   manifest[document.key] = latest.name;

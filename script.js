@@ -16,7 +16,7 @@
   });
 
   /* ---------- Latest PDFs ----------
-     배포 시 생성된 목록을 읽어 upt 날짜가 가장 최신인 원본 PDF에 직접 연결. */
+     배포 시 생성된 목록을 읽어 가장 최근에 수정된 원본 PDF에 직접 연결. */
   const pdfLinks = [...document.querySelectorAll('[data-latest-pdf]')];
   pdfLinks.forEach(link => {
     link.addEventListener('click', (event) => {
@@ -33,7 +33,7 @@
       pdfLinks.forEach(link => {
         const fileName = manifest[link.dataset.latestPdf];
         const valid = typeof fileName === 'string'
-          && /^upt[_-]?\d{6,8}[^/\\]*\.pdf$/i.test(fileName);
+          && /^[^/\\]+\.pdf$/i.test(fileName);
         if (!valid) return;
 
         link.href = `assets/pdf/${encodeURIComponent(fileName)}`;
