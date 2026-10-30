@@ -59,8 +59,9 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
    Sidebar
    ========================================================= */
 .sidebar {
-  position: fixed; left: 0; top: 0; z-index: 100;
-  width: var(--sidebar); height: 100vh;
+  /* 높이를 100vh로 두면 iOS 사파리에서 툴바가 다시 펼쳐질 때 아래(Contact)가 잘림 → top·bottom으로 보이는 영역에 직접 붙임 */
+  position: fixed; left: 0; top: 0; bottom: 0; z-index: 100;
+  width: var(--sidebar);
   display: flex; flex-direction: column; align-items: center; justify-content: flex-end;
   padding: 40px 0 4vh;
   background-color: rgba(255, 255, 255, 0.82);
