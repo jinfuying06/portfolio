@@ -137,6 +137,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .skill-tags.hero-tags li { background: var(--surface); font-size: var(--fz-sm); font-weight: 600; color: var(--ink); }
 .hero-description { margin-top: 24px; font-size: var(--fz-lg); line-height: 1.75; color: var(--text-2); }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+.hero-actions[hidden] { display: none; }
 
 .hero-image-wrapper { display: flex; justify-content: center; }
 .profile-frame { position: relative; width: 280px; max-width: 80%; aspect-ratio: 1 / 1; }
