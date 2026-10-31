@@ -192,6 +192,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .thumbs.five { grid-template-columns: repeat(5, 1fr); margin-top: 0; }
 .thumbs.pair { grid-template-columns: repeat(2, 1fr); }
 .thumbs.five .thumb img { aspect-ratio: 1366 / 2968; }
+.see-img { color: var(--text-2); font-size: var(--fz-xxs); font-weight: 600; white-space: nowrap; }
 .thumb span .ai-badge { margin: 0 0 0 6px; }
 .thumb { display: flex; flex-direction: column; }
 .thumb img { aspect-ratio: 4 / 3; object-fit: cover; object-position: top; }
