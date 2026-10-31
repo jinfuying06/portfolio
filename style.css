@@ -183,7 +183,9 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .zoomable:hover img { transform: scale(1.025); }
 .thumbs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 12px; }
 .thumbs:has(> :nth-child(4)) { grid-template-columns: repeat(4, 1fr); }
-.thumbs.steps { grid-template-columns: repeat(3, 1fr); margin-top: 0; }
+.thumbs.steps { grid-template-columns: repeat(6, 1fr); margin-top: 0; }
+.thumbs.steps > * { grid-column: span 2; }
+.thumbs.steps > :nth-child(n+4) { grid-column: span 3; } /* 단계 3+2, 기반 기능 2 */
 .thumbs.steps .thumb img { aspect-ratio: 16 / 10; }
 .thumbs.screens { grid-template-columns: repeat(4, 1fr); margin-top: 0; }
 .thumbs.screens .thumb img { aspect-ratio: 361 / 781; }

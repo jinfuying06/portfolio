@@ -11,11 +11,6 @@ const manifestPath = join(pdfDir, 'latest.json');
 // are picked up without changing code. Unicode escapes keep this source portable.
 const documents = [
   {
-    key: 'portfolio',
-    label: 'portfolio',
-    matches: (name) => !name.toLowerCase().includes('prd'),
-  },
-  {
     key: 'bbodeuk',
     label: 'bbodeuk PRD',
     matches: (name) => name.includes('\ubf40\ub4dd\ubf40\ub4dd') && name.toLowerCase().includes('prd'),
