@@ -300,7 +300,10 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .proj-index { margin-bottom: 72px; }
 .career-meta { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; column-gap: 16px; padding-bottom: 14px; border-bottom: 1px solid var(--line-strong); font-size: var(--fz-md); color: var(--text-2); }
 .career-meta strong { color: var(--ink); }
-.career-meta .when { font-family: var(--font-num); font-size: var(--fz-sm); font-variant-numeric: tabular-nums; color: var(--text-3); }
+.career-meta .sep { margin: 0 10px; color: var(--line-strong); }
+.career-meta .kw { display: inline-block; }
+.career-meta .kw:not(:last-child)::after { content: ' ·'; margin-right: 0.1em; color: var(--text-3); }
+.career-meta .when { flex-shrink: 0; font-family: var(--font-num); font-size: var(--fz-sm); font-variant-numeric: tabular-nums; color: var(--text-3); }
 .career-group { margin: 28px 0 10px; font-size: var(--fz-xs); font-weight: 600; letter-spacing: 0.04em; color: var(--text-3); }
 .career-list li {
   display: grid; grid-template-columns: 1fr auto; column-gap: 16px;
