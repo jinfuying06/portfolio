@@ -295,6 +295,28 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
    About & Career
    ========================================================= */
 @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+/* Projects 목차 */
+.proj-index { margin-bottom: 72px; }
+.career-meta { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; column-gap: 16px; padding-bottom: 14px; border-bottom: 1px solid var(--line-strong); font-size: var(--fz-md); color: var(--text-2); }
+.career-meta strong { color: var(--ink); }
+.career-meta .when { font-family: var(--font-num); font-size: var(--fz-sm); font-variant-numeric: tabular-nums; color: var(--text-3); }
+.career-group { margin: 28px 0 10px; font-size: var(--fz-xs); font-weight: 600; letter-spacing: 0.04em; color: var(--text-3); }
+.career-list li {
+  display: grid; grid-template-columns: 1fr auto; column-gap: 16px;
+  padding: 14px 16px; margin-bottom: 10px; border-left: 2px solid var(--ink); border-radius: 0 var(--radius) var(--radius) 0;
+  background: var(--surface); transition: var(--transition);
+}
+.career-list strong { font-size: var(--fz-md); }
+.career-list .when { min-width: 9.5em; font-family: var(--font-num); font-size: var(--fz-xs); font-variant-numeric: tabular-nums; text-align: right; color: var(--text-3); align-self: center; }
+.career-list p { grid-column: 1 / -1; margin-top: 2px; font-size: var(--fz-sm); color: var(--text-2); }
+.career-list li.is-link { padding: 0; }
+.career-list li.is-link a { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr auto; column-gap: 16px; padding: 14px 16px; color: inherit; text-decoration: none; border-radius: 0 var(--radius) var(--radius) 0; transition: var(--transition); }
+.career-list li.is-link:hover { transform: translateX(5px); background: var(--ink); }
+.career-list li.is-link:hover strong, .career-list li.is-link:hover p, .career-list li.is-link:hover .when { color: var(--bg); }
+.career-list li.is-link a:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+.career-list .arrow { display: inline-block; transition: transform 0.25s var(--ease); }
+.career-list li.is-link:hover .arrow { transform: translateX(4px); }
+
 .project { scroll-margin-top: 40px; }
 
 /* =========================================================
@@ -390,6 +412,10 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   .section-heading::after { display: none; }
   .section-number { margin-bottom: 4px; }
   .case { grid-template-columns: 1fr; }
+  .career-list li, .career-list li.is-link a { grid-template-columns: 1fr; }
+  .career-list .when { order: -1; min-width: 0; text-align: left; }
+  .career-meta { display: block; }
+  .career-meta .when { display: block; margin-top: 2px; }
   .case dt { padding: 12px 0 2px; }
   .case dd { padding: 0 0 12px; border-top: 0; }
   .flow-card { padding: 20px 16px; }
@@ -466,6 +492,8 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   .hist-row { padding: 1.5mm 3mm; font-size: 8pt; }
   .flow-note { margin-bottom: 3mm; font-size: 8pt; }
 
+  .proj-index { margin-bottom: 6mm; }
+  .career-list li { padding: 2.5mm 4mm; margin-bottom: 2mm; break-inside: avoid; }
   .skills-grid { gap: 4mm; }
   .skill-category { padding: 4mm; }
   #contact { break-inside: avoid; margin-top: 8mm; padding-top: 6mm; border-top: 1px solid var(--line); }
