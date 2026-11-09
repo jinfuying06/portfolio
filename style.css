@@ -297,7 +297,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
    ========================================================= */
 @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
 /* Projects 목차 */
-.proj-index { margin-bottom: 72px; }
+.proj-index { margin-bottom: 0; }
 .career-meta { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; column-gap: 16px; padding-bottom: 14px; border-bottom: 1px solid var(--line-strong); font-size: var(--fz-md); color: var(--text-2); }
 .career-meta strong { color: var(--ink); }
 .career-meta .sep { margin: 0 10px; color: var(--line-strong); }
