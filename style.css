@@ -135,6 +135,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .hero-name { margin-bottom: 16px; font-size: clamp(44px, 8vw, 80px); font-weight: 800; line-height: 1.05; letter-spacing: -0.03em; color: var(--ink); }
 .hero-name-en { margin-left: 14px; font-family: var(--font-num); font-size: clamp(13px, 2.2vw, 19px); font-weight: 400; letter-spacing: 0.14em; color: var(--text-3); }
 .hero-title { margin-bottom: 22px; font-size: clamp(20px, 3.6vw, 38px); font-weight: 700; line-height: 1.35; letter-spacing: -0.02em; color: var(--text); }
+.hero-title { text-wrap: balance; }
 .hero-title span { display: inline-block; }
 .skill-tags.hero-tags li { background: var(--surface); font-size: var(--fz-sm); font-weight: 600; color: var(--ink); }
 .hero-description { max-width: 40em; margin-top: 0; font-size: var(--fz-lg); line-height: 1.8; color: var(--text-2); }
