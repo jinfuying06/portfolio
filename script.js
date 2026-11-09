@@ -89,31 +89,6 @@
   window.addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(spy); } }, { passive: true });
   spy();
 
-  /* ---------- 3. Tabs (ARIA + 방향키) ---------- */
-  document.querySelectorAll('[role="tablist"]').forEach(list => {
-    const tabs = [...list.querySelectorAll('[role="tab"]')];
-    const select = (tab, focus) => {
-      tabs.forEach(t => {
-        const on = t === tab;
-        t.classList.toggle('is-active', on);
-        t.setAttribute('aria-selected', on);
-        t.tabIndex = on ? 0 : -1;
-        const panel = document.getElementById(t.getAttribute('aria-controls'));
-        if (panel) panel.hidden = !on;
-      });
-      if (focus) tab.focus();
-    };
-    tabs.forEach((tab, idx) => {
-      tab.addEventListener('click', () => select(tab, false));
-      tab.addEventListener('keydown', (e) => {
-        const step = { ArrowRight: 1, ArrowDown: 1, ArrowLeft: -1, ArrowUp: -1 }[e.key];
-        if (step) { e.preventDefault(); select(tabs[(idx + step + tabs.length) % tabs.length], true); }
-        if (e.key === 'Home') { e.preventDefault(); select(tabs[0], true); }
-        if (e.key === 'End') { e.preventDefault(); select(tabs.at(-1), true); }
-      });
-    });
-  });
-
   /* ---------- 4. Lightbox (같은 프로젝트 화면끼리 이전/다음) ---------- */
   const lb = document.getElementById('lightbox');
   const lbImg = lb.querySelector('img');
