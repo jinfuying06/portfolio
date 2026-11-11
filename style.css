@@ -211,8 +211,8 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   transition: var(--transition);
 }
 
-.case { display: grid; grid-template-columns: 72px 1fr; column-gap: 14px; }
-.case dt { padding: 12px 0; border-top: 1px solid var(--line); font-size: var(--fz-xs); font-weight: 700; color: var(--ink); }
+.case { display: grid; grid-template-columns: 86px 1fr; column-gap: 0; } /* 칸 사이 틈 없이 구분선이 한 줄로 이어지게 */
+.case dt { padding: 12px 14px 12px 0; border-top: 1px solid var(--line); font-size: var(--fz-xs); font-weight: 700; color: var(--ink); }
 .case dd { padding: 11px 0; border-top: 1px solid var(--line); font-size: var(--fz-sm); color: var(--text-2); line-height: 1.6; }
 .case dd strong { color: var(--ink); }
 .case + .points { margin-top: 0; }
@@ -249,6 +249,43 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .cap .tick-list li { font-size: var(--fz-sm); line-height: 1.6; margin-bottom: 8px; }
 .cap .tick-list strong { margin-right: 5px; color: var(--ink); }
 .cap .tick-list li:last-child { margin-bottom: 0; }
+
+/* 개발 프로젝트 케이스 (① 첫 화면 · ② 설계 보기 · ③ 상세 문서) */
+.cs-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+.cs-chips li { padding: 3px 10px; border: 1px solid var(--line-strong); border-radius: 999px; font-size: var(--fz-xs); color: var(--text-2); }
+/* 왼쪽 이미지: 대표 화면은 원본 비율 그대로, 기획 문서(16:9)는 잘리지 않게 */
+.thumbs.lead { grid-template-columns: 1fr; }
+.project-media > .thumbs:first-child { margin-top: 0; }
+.thumbs.lead .thumb img { aspect-ratio: auto; }
+.thumbs.doc .thumb img { aspect-ratio: 16 / 9; object-fit: contain; background: #fff; }
+.thumb span .kind { font-style: normal; font-weight: 500; color: var(--text-3); }
+.thumb span .sep { margin: 0 6px; font-style: normal; font-weight: 400; color: var(--line-strong); }
+.cs-designs { margin-top: 14px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.cs-designs summary { display: flex; align-items: center; gap: 8px; padding: 16px 0; font-size: var(--fz-md); font-weight: 700; color: var(--ink); cursor: pointer; list-style: none; }
+.cs-designs summary::-webkit-details-marker { display: none; }
+/* 채운 삼각형(▶): 접힘 → 펼치면 아래(▼)로 회전 */
+.cs-designs summary::before { content: ''; width: 0; height: 0; border-left: 8px solid currentColor; border-top: 5px solid transparent; border-bottom: 5px solid transparent; transition: transform 0.25s var(--ease); }
+.cs-designs[open] summary::before { transform: rotate(90deg); }
+.cs-designs summary:hover { color: var(--text-2); }
+.cs-design { padding: 22px 0 26px; border-top: 1px solid var(--line); }
+/* 펼칠 때 첫 설계 위에는 선을 두지 않음 → 기존 아래쪽 선이 내용과 함께 내려가며 펼쳐지는 느낌 */
+.cs-designs summary + .cs-design { border-top: 0; padding-top: 4px; }
+.cs-design h4 { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 0; margin-bottom: 12px; font-size: var(--fz-lg); font-weight: 700; color: var(--ink); }
+.cs-design h4 > span { margin-right: 10px; font-family: var(--font-num); color: var(--text-3); }
+.cs-design .case { grid-template-columns: 86px 1fr; }
+.cs-design .case dt:first-child, .cs-design .case dt:first-child + dd { border-top: 0; }
+.other-work .cap-domain { margin-bottom: 4px; }
+.other-work .cap h4 { margin-bottom: 8px; }
+.other-work { margin-bottom: 72px; }
+.other-work .cap p:last-child { font-size: var(--fz-sm); color: var(--text-2); }
+.cs-table-wrap { margin-top: 16px; overflow-x: auto; }
+.cs-table { width: 100%; max-width: 520px; border-collapse: collapse; font-size: var(--fz-sm); font-variant-numeric: tabular-nums; }
+.cs-table caption { margin-bottom: 6px; text-align: left; font-size: var(--fz-xs); font-weight: 700; color: var(--ink); }
+.cs-table th, .cs-table td { padding: 8px 12px; border: 1px solid var(--line); text-align: center; }
+.cs-table thead th { background: var(--surface); font-weight: 600; color: var(--text); }
+.cs-table tbody th { text-align: left; font-weight: 600; color: var(--text-3); white-space: nowrap; }
+.cs-table tbody tr:last-child td { font-weight: 700; color: var(--ink); }
+.cs-doc { align-items: center; }
 
 /* Genie state flow card */
 .flow-card {
@@ -314,9 +351,8 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 }
 .career-list strong { font-size: var(--fz-md); }
 .career-list .when { min-width: 0; font-family: var(--font-num); font-size: var(--fz-xs); font-variant-numeric: tabular-nums; text-align: right; color: var(--text-3); align-self: center; }
-.career-list .org { font-weight: 600; color: var(--text-2); }
-.career-list .org::after { content: ' · '; font-weight: 400; color: var(--text-3); }
-.career-list li.is-link:hover .org, .career-list li.is-link:hover .org::after { color: var(--bg); }
+.career-list .when .sep { margin: 0 8px; color: var(--line-strong); }
+.career-list li.is-link:hover .sep { color: var(--text-3); }
 .career-list p { grid-column: 1 / -1; margin-top: 2px; font-size: var(--fz-sm); color: var(--text-2); }
 .career-list li.is-link { padding: 0; }
 .career-list li.is-link a { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr auto; column-gap: 16px; padding: 14px 16px; color: inherit; text-decoration: none; border-radius: 0 var(--radius) var(--radius) 0; transition: var(--transition); }
@@ -420,7 +456,8 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   .section-heading { flex-direction: column; align-items: flex-start; white-space: normal; }
   .section-heading::after { display: none; }
   .section-number { margin-bottom: 4px; }
-  .case { grid-template-columns: 1fr; }
+  .case, .cs-design .case { grid-template-columns: 1fr; }
+  .cs-doc .btn { flex: 1 1 100%; }
   .career-list li, .career-list li.is-link a { grid-template-columns: 1fr; }
   .career-list .when { order: -1; text-align: left; }
   .career-meta { display: block; }
@@ -499,6 +536,8 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   .cap h4 { font-size: 10pt; margin-bottom: 2mm; }
   .cap .tick-list li { font-size: 8.5pt; margin-bottom: 1mm; }
   .hist-row { padding: 1.5mm 3mm; font-size: 8pt; }
+  .cs-designs summary::before { display: none; }
+  .cs-design { padding: 3mm 0; break-inside: avoid; }
   .flow-note { margin-bottom: 3mm; font-size: 8pt; }
 
   .proj-index { margin-bottom: 6mm; }

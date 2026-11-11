@@ -89,6 +89,9 @@
   window.addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(spy); } }, { passive: true });
   spy();
 
+  /* 인쇄·PDF에는 접힌 '설계 보기'도 펼쳐서 담음 */
+  window.addEventListener('beforeprint', () => document.querySelectorAll('details').forEach(d => { d.open = true; }));
+
   /* ---------- 4. Lightbox (같은 프로젝트 화면끼리 이전/다음) ---------- */
   const lb = document.getElementById('lightbox');
   const lbImg = lb.querySelector('img');
