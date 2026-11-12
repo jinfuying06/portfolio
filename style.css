@@ -273,13 +273,6 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .other-work .cap h4 { margin-bottom: 8px; }
 .other-work { margin-bottom: 72px; }
 .other-work .cap p:last-child { font-size: var(--fz-sm); color: var(--text-2); }
-.cs-table-wrap { margin-top: 16px; overflow-x: auto; }
-.cs-table { width: 100%; max-width: 520px; border-collapse: collapse; font-size: var(--fz-sm); font-variant-numeric: tabular-nums; }
-.cs-table caption { margin-bottom: 6px; text-align: left; font-size: var(--fz-xs); font-weight: 700; color: var(--ink); }
-.cs-table th, .cs-table td { padding: 8px 12px; border: 1px solid var(--line); text-align: center; }
-.cs-table thead th { background: var(--surface); font-weight: 600; color: var(--text); }
-.cs-table tbody th { text-align: left; font-weight: 600; color: var(--text-3); white-space: nowrap; }
-.cs-table tbody tr:last-child td { font-weight: 700; color: var(--ink); }
 .cs-doc { align-items: center; }
 
 /* Genie state flow card */
