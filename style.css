@@ -9,16 +9,16 @@
   --line-strong: #d4d4d4;
   --ink: #0a0a0a;
   --text: #262626;
-  --text-2: #525252;
-  --text-3: #737373;
-  --text-4: #a3a3a3;
+  --text-2: #404040;
+  --text-3: #5c5c5c;
+  --text-4: #8a8a8a;
   --ink-tint: rgba(10, 10, 10, 0.05);
   --shadow: 0 14px 30px -14px rgba(0, 0, 0, 0.28);
 
   --font-sans: 'Pretendard Variable', Pretendard, 'Inter', -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Noto Sans CJK KR', 'Segoe UI', sans-serif;
   --font-num: 'Inter', 'Pretendard Variable', Pretendard, sans-serif;
 
-  --fz-xxs: 12px; --fz-xs: 13px; --fz-sm: 14px; --fz-md: 16px;
+  --fz-xxs: 13px; --fz-xs: 14px; --fz-sm: 15px; --fz-md: 16px;
   --fz-lg: 18px; --fz-xl: 20px; --fz-heading: 32px;
   --radius: 6px;
   --sidebar: 100px;
@@ -98,7 +98,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
    Layout
    ========================================================= */
 .main-wrapper { margin-left: var(--sidebar); min-height: 100vh; }
-.section { max-width: 1120px; margin: 0 auto; padding: 110px 50px; }
+.section { max-width: 1120px; margin: 0 auto; padding: 72px 50px; }
 
 .section-heading {
   display: flex; align-items: center; width: 100%;
@@ -166,13 +166,15 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
    ========================================================= */
 .project {
   display: grid; grid-template-columns: repeat(12, 1fr); column-gap: 20px; align-items: start;
-  margin-bottom: 120px;
+  margin-bottom: 80px;
 }
 .project:last-child { margin-bottom: 0; }
 .project-head { grid-column: 1 / -1; grid-row: 1; margin-bottom: 28px; }
 .project-head .project-desc { margin-bottom: 0; }
 .project-media { grid-column: 1 / 7; grid-row: 2; position: sticky; top: 48px; }
 .project-text { grid-column: 7 / -1; grid-row: 2; padding-left: 28px; }
+/* 사례형은 이미지 영역이 화면보다 길어 고정하면 잘리며 튐 */
+.project.cs .project-media { position: static; }
 .project.is-reverse .project-media { grid-column: 7 / -1; grid-row: 2; }
 .project.is-reverse .project-text { grid-column: 1 / 7; grid-row: 2; padding-left: 0; padding-right: 28px; }
 
@@ -181,6 +183,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   border-radius: var(--radius); border: 1px solid var(--line); background: var(--surface);
   transition: var(--transition);
 }
+.zoomable::after { content: '⤢ 확대'; position: absolute; top: 8px; right: 8px; padding: 2px 8px; border-radius: 999px; background: rgba(10,10,10,.72); color: #fff; font-size: 12px; font-weight: 600; pointer-events: none; }
 .zoomable img { width: 100%; height: auto; transition: filter 0.4s ease, transform 0.6s var(--ease); }
 .zoomable:hover { border-color: var(--ink); box-shadow: var(--shadow); transform: translateY(-5px); }
 .zoomable:hover img { transform: scale(1.025); }
@@ -257,19 +260,11 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .thumbs.lead { grid-template-columns: 1fr; }
 .project-media > .thumbs:first-child { margin-top: 0; }
 .thumbs.lead .thumb img { aspect-ratio: auto; }
+.thumbs.doc { grid-template-columns: 1fr; }
 .thumbs.doc .thumb img { aspect-ratio: 16 / 9; object-fit: contain; background: #fff; }
 .thumb span .kind { font-style: normal; font-weight: 500; color: var(--text-3); }
 .thumb span .sep { margin: 0 6px; font-style: normal; font-weight: 400; color: var(--line-strong); }
-.cs-designs { margin-top: 14px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-.cs-designs summary { display: flex; align-items: center; gap: 8px; padding: 16px 0; font-size: var(--fz-md); font-weight: 700; color: var(--ink); cursor: pointer; list-style: none; }
-.cs-designs summary::-webkit-details-marker { display: none; }
-/* 채운 삼각형(▶): 접힘 → 펼치면 아래(▼)로 회전 */
-.cs-designs summary::before { content: ''; width: 0; height: 0; border-left: 8px solid currentColor; border-top: 5px solid transparent; border-bottom: 5px solid transparent; transition: transform 0.25s var(--ease); }
-.cs-designs[open] summary::before { transform: rotate(90deg); }
-.cs-designs summary:hover { color: var(--text-2); }
 .cs-design { padding: 22px 0 26px; border-top: 1px solid var(--line); }
-/* 펼칠 때 첫 설계 위에는 선을 두지 않음 → 기존 아래쪽 선이 내용과 함께 내려가며 펼쳐지는 느낌 */
-.cs-designs summary + .cs-design { border-top: 0; padding-top: 4px; }
 .cs-design h4 { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 0; margin-bottom: 12px; font-size: var(--fz-lg); font-weight: 700; color: var(--ink); }
 .cs-design h4 > span { margin-right: 10px; font-family: var(--font-num); color: var(--text-3); }
 .cs-design .case { grid-template-columns: 86px 1fr; }
@@ -411,9 +406,6 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 /* =========================================================
    Reveal — animation(backwards) 방식이라 hover 전환을 덮지 않음
    ========================================================= */
-.js .reveal:not(.is-visible) { opacity: 0; }
-.js .reveal.is-visible { animation: revealUp 0.7s var(--ease) backwards; animation-delay: calc(var(--i, 0) * 100ms); }
-@keyframes revealUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
 
 /* =========================================================
    Responsive
@@ -439,7 +431,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   .nav-link::after { display: none; }
   .main-wrapper { margin-left: 0; margin-bottom: 60px; }
 
-  .section { padding: 80px 24px; }
+  .section { padding: 56px 24px; }
   .section-heading::after { width: 80px; }
   .hero-section { padding: 48px 24px 40px; min-height: auto; }
   .hero-container { grid-template-columns: 1fr; gap: 48px; }
@@ -451,7 +443,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 }
 
 @media (max-width: 480px) {
-  .section { padding: 64px 18px; }
+  .section { padding: 44px 18px; }
   .hero-section { padding: 40px 18px 32px; }
   .section-heading { flex-direction: column; align-items: flex-start; white-space: normal; }
   .section-heading::after { display: none; }
@@ -536,7 +528,6 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   .cap h4 { font-size: 10pt; margin-bottom: 2mm; }
   .cap .tick-list li { font-size: 8.5pt; margin-bottom: 1mm; }
   .hist-row { padding: 1.5mm 3mm; font-size: 8pt; }
-  .cs-designs summary::before { display: none; }
   .cs-design { padding: 3mm 0; break-inside: avoid; }
   .flow-note { margin-bottom: 3mm; font-size: 8pt; }
 
