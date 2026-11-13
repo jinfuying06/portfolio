@@ -88,7 +88,7 @@
 
       <p class="career-group">그 외 실무 프로젝트</p>
       <ul class="career-list">
-        <li class="is-link"><a href="#exam"><strong>삼성전기 수험 접수 시스템 리뉴얼</strong><span class="when">2022.07 – 2022.10<span class="sep" aria-hidden="true">|</span>(주)이엔타</span><p>성적 업로드 한 번으로 점수 반영, 합격 판정, 급수 취득 처리 <span class="arrow" aria-hidden="true">→</span></p></a></li>
+        <li class="is-link"><a href="#exam"><strong>삼성전기 수험 접수 시스템 리뉴얼</strong><span class="when">2022.07 – 2022.10<span class="sep" aria-hidden="true">|</span>(주)이엔타</span><p>성적 업로드 기반 합격 판정, 시험 면제 대상 등록 <span class="arrow" aria-hidden="true">→</span></p></a></li>
         <li class="is-link"><a href="#proposal"><strong>삼성전기 제안 평가 고도화</strong><span class="when">2022.10 – 2023.02<span class="sep" aria-hidden="true">|</span>(주)이엔타</span><p>평가 가중치, 결재 라인을 코드 수정 없이 운영자가 직접 설정 <span class="arrow" aria-hidden="true">→</span></p></a></li>
         <li class="is-link" hidden><a href="#chatbot"><strong>사내 챗봇 PoC</strong><span class="when">2024.07 – 2024.08<span class="sep" aria-hidden="true">|</span>(주)이엔타</span><p>자세히 보기 <span class="arrow" aria-hidden="true">→</span></p></a></li>
         <li class="is-link"><a href="#genie"><strong>Databricks Genie API 기반 데이터 조회 챗봇 PoC</strong><span class="when">2026.02 – 2026.03<span class="sep" aria-hidden="true">|</span>(주)이엔타</span><p>질의, 응답 특성으로 차트 생성 여부와 유형을 자동 판단 <span class="arrow" aria-hidden="true">→</span></p></a></li>      </ul>
@@ -190,7 +190,7 @@
             <h4><span>02</span>출제 규칙과 안전장치</h4>
             <dl class="case">
               <dt>문제</dt><dd>난이도 비율대로 문항을 나누면 반올림 때문에 합계가 설정값과 어긋날 수 있었고, 시험지 유형마다 문항 구성이 달라야 했습니다. 출제 버튼을 여러 번 누르면 시험지가 중복으로 만들어질 위험도 있었습니다.</dd>
-              <dt>설계</dt><dd>남거나 모자란 문항을 조정하는 규칙을 두고 검증과 출제에 똑같이 적용했습니다. 유형마다 문항과 보기 순서를 다르게 섞어 응시자에게 돌아가며 배정하고, <strong>이미 출제된 시험은 다시 만들어지지 않게</strong> 했습니다.</dd>
+              <dt>설계</dt><dd>남거나 모자란 문항을 조정하는 규칙을 두고 검증과 출제에 똑같이 적용했습니다. 유형마다 문항과 보기 순서를 다르게 섞어 응시자에게 돌아가며 배정하고, 출제를 마친 시험은 '완료'로 표시해 <strong>중복 출제를 막았습니다</strong>.</dd>
               <dt>결과</dt><dd>시험지 문항 수가 항상 설정값과 일치하고, 응시자는 유형별로 고르게 나뉩니다. <span class="see-img">↳ 예시화면 | 출제와 배정 현황, 화면기획 | 출제와 배정 현황</span></dd>
             </dl>
           </section>
@@ -311,7 +311,7 @@
             <h4><span>01</span>성적 입력과 합격 판정</h4>
             <dl class="case">
               <dt>문제</dt><dd>채점 결과를 시스템에 옮기고 합격 기준과 하나씩 대조해야 합격 여부와 급수가 정해졌습니다.</dd>
-              <dt>설계</dt><dd>OMR 채점 엑셀을 <strong>그대로 올리면</strong> 응시자별 과목 점수가 반영되고, 검정에 설정된 과목별 배점 기준으로 합격 여부를 판정하도록 했습니다. 양식이 맞지 않거나 대상이 아닌 응시자는 반영하지 않고 안내합니다.</dd>
+              <dt>설계</dt><dd>OMR 채점 엑셀을 그대로 올리면 응시자별 과목 점수가 반영되고, 검정에 설정된 과목별 배점 기준으로 <strong>합격 여부를 판정</strong>하도록 했습니다. 양식이 맞지 않거나 대상이 아닌 응시자는 반영하지 않고 안내합니다.</dd>
               <dt>결과</dt><dd>업로드 한 번으로 점수 반영부터 합격 판정, 급수 취득까지 처리합니다. <span class="see-img">↳ 예시화면, 플로우차트, 화면기획</span></dd>
             </dl>
           </section>
