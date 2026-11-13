@@ -131,4 +131,33 @@
     if (e.key === 'ArrowRight' && group.length > 1) show(idx + 1);
   });
 
+
+  /* ---------- 프로젝트: 이미지 높이를 글 높이에 맞춤 ----------
+     이미지 폭을 이분 탐색해, 글 높이를 넘지 않는 가장 큰 폭을 고른다. */
+  const MIN_TEXT = 420;
+  function fitCases() {
+    document.querySelectorAll('.project:not([hidden])').forEach((a) => {
+      if (!a.querySelector(':scope > .project-media') || !a.querySelector(':scope > .project-text')) return;
+      const media = a.querySelector('.project-media');
+      const text = a.querySelector('.project-text');
+      a.style.gridTemplateColumns = media.style.gridColumn = text.style.gridColumn = '';
+      if (getComputedStyle(a).display !== 'grid') return; // 모바일은 위아래 배치
+      const rev = a.classList.contains('is-reverse');
+      const apply = (w) => {
+        a.style.gridTemplateColumns = rev ? `minmax(0,1fr) ${w}px` : `${w}px minmax(0,1fr)`;
+        media.style.gridColumn = rev ? '2' : '1';
+        text.style.gridColumn = rev ? '1' : '2';
+        return media.offsetHeight <= text.offsetHeight;
+      };
+      let lo = 320, hi = a.clientWidth - MIN_TEXT;
+      if (apply(hi)) { a.style.gridTemplateColumns = media.style.gridColumn = text.style.gridColumn = ''; return; } // 최대로 넓혀도 글보다 짧으면 기본 배치
+      while (hi - lo > 4) { const mid = (lo + hi) >> 1; if (apply(mid)) lo = mid; else hi = mid; }
+      apply(lo);
+    });
+  }
+  fitCases();
+  window.addEventListener('load', fitCases);
+  let fitRaf = 0;
+  window.addEventListener('resize', () => { cancelAnimationFrame(fitRaf); fitRaf = requestAnimationFrame(fitCases); });
+
 })();
