@@ -183,7 +183,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   border-radius: var(--radius); border: 1px solid var(--line); background: var(--surface);
   transition: var(--transition);
 }
-.zoomable::after { content: '⤢ 확대'; position: absolute; top: 8px; right: 8px; padding: 2px 8px; border-radius: 999px; background: rgba(10,10,10,.72); color: #fff; font-size: 12px; font-weight: 600; pointer-events: none; }
+.zoomable::after { content: '⤢'; position: absolute; top: 8px; right: 8px; padding: 2px 7px; border-radius: 999px; background: rgba(10,10,10,.72); color: #fff; font-size: 12px; font-weight: 600; pointer-events: none; }
 .zoomable img { width: 100%; height: auto; transition: filter 0.4s ease, transform 0.6s var(--ease); }
 .zoomable:hover { border-color: var(--ink); box-shadow: var(--shadow); transform: translateY(-5px); }
 .zoomable:hover img { transform: scale(1.025); }
@@ -198,7 +198,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .thumbs.five { grid-template-columns: repeat(5, 1fr); margin-top: 0; }
 .thumbs.pair { grid-template-columns: repeat(2, 1fr); }
 .thumbs.five .thumb img { aspect-ratio: 1366 / 2968; }
-.see-img { color: var(--text-2); font-size: var(--fz-xxs); font-weight: 600; white-space: nowrap; }
+.see-img { display: block; margin-top: 4px; color: var(--text-2); font-size: var(--fz-xxs); font-weight: 600; }
 .thumb span .ai-badge { margin: 0 0 0 6px; }
 .thumb { display: flex; flex-direction: column; }
 .thumb img { aspect-ratio: 4 / 3; object-fit: cover; object-position: top; }
@@ -269,10 +269,6 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .cs-design h4 > span { margin-right: 10px; font-family: var(--font-num); color: var(--text-3); }
 .cs-design .case { grid-template-columns: 86px 1fr; }
 .cs-design .case dt:first-child, .cs-design .case dt:first-child + dd { border-top: 0; }
-.other-work .cap-domain { margin-bottom: 4px; }
-.other-work .cap h4 { margin-bottom: 8px; }
-.other-work { margin-bottom: 72px; }
-.other-work .cap p:last-child { font-size: var(--fz-sm); color: var(--text-2); }
 .cs-doc { align-items: center; }
 
 /* Genie state flow card */
