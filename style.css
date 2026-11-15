@@ -144,7 +144,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .hero-actions[hidden] { display: none; }
 
 .hero-image-wrapper { display: flex; justify-content: center; }
-.profile-frame { position: relative; width: 280px; max-width: 80%; aspect-ratio: 1 / 1; }
+.profile-frame { position: relative; width: 260px; max-width: 80%; aspect-ratio: 3 / 4; } /* 반명함 비율 */
 .profile-frame::before {
   content: ''; position: absolute; inset: 0; translate: 20px 20px;
   border: 2px solid var(--ink); border-radius: var(--radius); transition: var(--transition);
@@ -396,14 +396,14 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 /* =========================================================
    Responsive
    ========================================================= */
-@media (max-width: 1024px) {
+@media screen and (max-width: 1024px) {
   .project, .project.is-reverse { display: block; margin-bottom: 96px; }
   .project-head { margin-bottom: 24px; }
   .project-media { position: static; max-width: 640px; margin-bottom: 28px; }
   .project-text, .project.is-reverse .project-text { padding: 0; }
 }
 
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
   :root { --sidebar: 0px; }
   .cap-grid { grid-template-columns: 1fr; }
   .sidebar {
@@ -428,7 +428,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   .skills-grid { grid-template-columns: 1fr; }
 }
 
-@media (max-width: 480px) {
+@media screen and (max-width: 480px) {
   .section { padding: 44px 18px; }
   .hero-section { padding: 40px 18px 32px; }
   .section-heading { flex-direction: column; align-items: flex-start; white-space: normal; }
@@ -457,71 +457,78 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
    Print / PDF
    ========================================================= */
 @media print {
+  /* A4 세로. 반응형 규칙은 screen 전용이라 여기만 보면 됨 */
   @page { size: A4; margin: 14mm 14mm 16mm; }
-  body { font-size: 10.5pt; color: #222; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body { font-size: 10pt; color: #222; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   .sidebar, .lightbox, .skip-link, .hero-actions, .footer-note, .contact-actions { display: none !important; }
-  .main-wrapper { margin: 0; }
+  .main-wrapper { margin: 0; min-height: 0; }
   .js .reveal { opacity: 1 !important; }
   *, *::before, *::after { animation: none !important; transition: none !important; box-shadow: none !important; }
-  .thumbs { gap: 2mm; margin-top: 2mm; }
-  .thumb span { padding: 1mm 2mm; font-size: 7pt; }
 
   .section { max-width: none; padding: 0; margin: 0 0 9mm; }
-  .section-heading { margin: 0 0 6mm; font-size: 18pt; break-after: avoid; }
+  .section-heading { margin: 0 0 4mm; font-size: 18pt; break-after: avoid; }
   .section-heading::after { width: 100px; }
 
-  .hero-section { min-height: auto; padding: 2mm 0 7mm; max-width: none; margin-bottom: 8mm; border-bottom: 1px solid var(--line); }
-  .hero-container { grid-template-columns: 1fr 44mm; gap: 10mm; }
-  .hero-name { font-size: 34pt; }
-  .hero-title { font-size: 17pt; margin-bottom: 3mm; }
-  .hero-tags li { padding: 1mm 2.5mm; font-size: 9pt; }
-  .hero-description { font-size: 10.5pt; margin-top: 3mm; max-width: none; }
-  .profile-frame { width: 40mm; max-width: none; }
+  /* 1쪽: 표지 + Experience */
+  .hero-section { display: block; min-height: auto; max-width: none; padding: 0; border-bottom: 1px solid var(--line); }
+  .hero-container { grid-template-columns: 1fr 30mm; gap: 10mm; align-items: start; }
+  .hero-name { font-size: 30pt; margin-bottom: 3mm; }
+  .hero-name-en { font-size: 11pt; }
+  .hero-title { font-size: 16pt; margin-bottom: 4mm; }
+  .hero-description { font-size: 10pt; line-height: 1.7; max-width: none; }
+  .skill-tags.hero-tags { margin-top: 4mm; }
+  .hero-tags li { padding: 1mm 2.5mm; font-size: 8.5pt; }
+  .profile-frame { width: 30mm; max-width: none; } /* 반명함 실물 크기 30×40mm */
   .profile-frame::before { translate: 2mm 2mm; }
+  .proj-index { margin-bottom: 0; }
+  .hero-section { padding-bottom: 5mm; margin-bottom: 6mm; }
+  .career-meta { font-size: 9.5pt; padding-bottom: 2.5mm; }
+  .career-group { margin: 3.5mm 0 1.5mm; break-after: avoid; }
+  .career-list li { margin-bottom: 1mm; break-inside: avoid; }
+  .career-list li.is-link a { padding: 1.4mm 4mm; }
+  .career-list strong { font-size: 10pt; }
+  .career-list p { margin-top: 0.5mm; font-size: 8.5pt; }
+  .career-list .arrow { display: none; }
 
-  .project, .project.is-reverse { display: grid; grid-template-columns: 70mm 1fr; column-gap: 8mm; margin-bottom: 9mm; break-inside: avoid; }
-  .project-head { grid-column: 1 / -1; grid-row: 1; margin-bottom: 4mm; max-width: none; }
-  .project-media, .project.is-reverse .project-media { grid-column: 1; grid-row: 2; position: static; }
-  .project-text, .project.is-reverse .project-text { grid-column: 2; grid-row: 2; padding: 0; }
-  .project-title { font-size: 18pt; margin: 0 0 2mm; }
-  .project-desc { padding: 3mm 4mm; margin-bottom: 3mm; font-size: 10pt; }
-  .case { grid-template-columns: 17mm 1fr; }
-  .case dt, .case dd { padding: 1.6mm 0; font-size: 9pt; line-height: 1.5; }
-  .tech-list { margin-top: 2.5mm; }
-  .points { padding-top: 2mm; }
-  .points .tick-list li { font-size: 9pt; margin-bottom: 1.2mm; }
-  .project-links { margin-top: 3mm; }
-  .project-links .btn { padding: 2mm 3mm; font-size: 8.5pt; border: 0; background: none !important; color: #444 !important; justify-content: flex-start; }
-  .project-links .btn[target]::after { content: attr(href); font-weight: 400; margin-left: 2mm; color: #777; }
-  .project-links .btn[download] { display: none; }
-  .project-links button[data-preview-dl] { display: none; }
-  .flow-card { padding: 4mm; }
-  .flow { gap: 2.5mm; }
-  .flow-node { padding: 2mm 3mm; font-size: 8.5pt; }
-  .flow-node::after { bottom: -2.6mm !important; height: 2.5mm !important; }
-  .flow-node small { font-size: 7.5pt; }
-
+  /* 프로젝트: 왼쪽 이미지 | 오른쪽 사례. 프로젝트 통째가 아니라 작은 단위만 안 잘리게 */
   #projects { break-before: page; }
-  .project:nth-of-type(5) { break-before: avoid; margin-top: 6mm; }
-  .project.is-wide { display: block !important; }
-  .project.is-wide { break-inside: auto !important; }
-  .project-group { display: block; font-size: 14pt; margin-bottom: 6mm; padding-bottom: 2mm; break-after: avoid; }
+  /* !important: script.js fitCases()가 창 폭 기준으로 넣는 인라인 grid 값을 덮어씀 */
+  .project, .project.is-reverse { display: grid; grid-template-columns: 66mm 1fr !important; column-gap: 7mm; margin: 0 0 10mm; break-inside: auto; }
+  .project-head { grid-column: 1 / -1; grid-row: 1; margin-bottom: 4mm; max-width: none; break-inside: avoid; break-after: avoid; }
+  .project-media, .project.is-reverse .project-media { grid-column: 1 !important; grid-row: 2; position: static; max-width: none; margin: 0; }
+  .project-text, .project.is-reverse .project-text { grid-column: 2 !important; grid-row: 2; padding: 0; }
+  .project-title { font-size: 17pt; margin: 0 0 2mm; }
+  .project-desc { padding: 3mm 4mm; font-size: 9.5pt; }
+  .cs-chips { margin-bottom: 2.5mm; }
+  .cs-chips li { font-size: 8pt; padding: 0.6mm 2.4mm; }
+  .case { grid-template-columns: 17mm 1fr; }
+  .case dt, .case dd { padding: 1.6mm 0; font-size: 9.2pt; line-height: 1.55; }
+  .case dt { padding-right: 2mm; }
+  .cs-design { padding: 3mm 0; break-inside: avoid; }
+  .points { padding-top: 2.5mm; }
+  .points .tick-list li { font-size: 9.2pt; line-height: 1.55; margin-bottom: 1.4mm; break-inside: avoid; }
+  .tech-list { margin-top: 2.5mm; }
+
+  .thumbs { gap: 2mm; margin-top: 2mm; }
+  .thumb { break-inside: avoid; }
+  .thumbs.five { grid-template-columns: repeat(3, 1fr); } /* 뽀득뽀득 세로 화면 5장: 3열로 키움 */
+  .thumb span { padding: 1mm 2mm; font-size: 7pt; }
+  .zoomable::after { display: none; }
+
+  /* 링크는 버튼 모양 그대로 (PDF로 저장하면 눌러서 열림) */
+  .project-links { gap: 2mm; margin-top: 3mm; }
+  .project-links .btn { padding: 1.5mm 3.5mm; font-size: 8.5pt; }
+
+  /* 프로젝트는 한 쪽에서 하나씩 시작 (그룹 제목 바로 뒤 첫 프로젝트만 제외) */
+  .project-group { display: block; font-size: 14pt; margin: 0 0 6mm; padding-bottom: 2mm; break-after: avoid; }
+  .project-group ~ .project { break-before: page; }
+  .project-group + .project { break-before: auto; }
   .project-group.is-dev { break-before: page; margin-top: 0; }
   .group-label { display: block; }
-  .group-note { margin-left: 3mm; }
-  .cap-grid { gap: 3mm; }
-  .cap { padding: 3.5mm 4mm; break-inside: avoid; }
-  .cap h4 { font-size: 10pt; margin-bottom: 2mm; }
-  .cap .tick-list li { font-size: 8.5pt; margin-bottom: 1mm; }
-  .hist-row { padding: 1.5mm 3mm; font-size: 8pt; }
-  .cs-design { padding: 3mm 0; break-inside: avoid; }
-  .flow-note { margin-bottom: 3mm; font-size: 8pt; }
 
-  .proj-index { margin-bottom: 6mm; }
-  .career-list li { padding: 2.5mm 4mm; margin-bottom: 2mm; break-inside: avoid; }
   .skills-grid { gap: 4mm; }
-  .skill-category { padding: 4mm; }
-  #contact { break-inside: avoid; margin-top: 8mm; padding-top: 6mm; border-top: 1px solid var(--line); }
+  .skill-category { padding: 4mm; break-inside: avoid; }
+  #contact { break-inside: avoid; margin-top: 4mm; padding-top: 4mm; border-top: 1px solid var(--line); }
   .contact-email { margin: 3mm 0 0; font-size: 16pt; }
-  .footer { padding: 6mm 0 0; }
+  .footer { padding: 3mm 0 0; }
 }
