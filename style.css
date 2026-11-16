@@ -264,6 +264,11 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .cs-design { padding: 22px 0 26px; border-top: 1px solid var(--line); }
 .cs-design h4 { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 0; margin-bottom: 12px; font-size: var(--fz-lg); font-weight: 700; color: var(--ink); }
 .cs-design h4 > span { margin-right: 10px; font-family: var(--font-num); color: var(--text-3); }
+/* 사례별 강점 표시: 히어로 칩(.hero-tags)과 같은 글자, 오른쪽 끝 */
+.str-tag { margin-left: auto; font-size: var(--fz-xxs); font-weight: 500; line-height: 1.6; color: var(--text-3); white-space: nowrap; }
+.str-tag::before { content: '# '; }
+.cs-design h4 > .str-tag { margin: 0 0 0 auto; font-family: inherit; color: var(--text-3); }
+.pt-head { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; margin-bottom: 2px; color: var(--ink); }
 .cs-design .case { grid-template-columns: 86px 1fr; }
 .cs-design .case dt:first-child, .cs-design .case dt:first-child + dd { border-top: 0; }
 .cs-doc { align-items: center; }
