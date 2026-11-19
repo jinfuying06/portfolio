@@ -27,7 +27,7 @@ const server = http.createServer(async (req, res) => {
     res.writeHead(200, { 'Content-Type': types[extname(p)] || 'application/octet-stream' }); res.end(body);
   } catch { res.writeHead(404); res.end(); }
 }).listen(0, '127.0.0.1');
-const url = `http://127.0.0.1:${server.address().port}/`;
+const url = `http://127.0.0.1:${server.address().port}/pm/`; // 루트는 첫 화면 전용이라 전체 사이트(/pm/)를 PDF로
 
 const browser = await chromium.launch(process.env.CHROMIUM_PATH ? { executablePath: process.env.CHROMIUM_PATH } : {});
 const page = await browser.newPage();
@@ -40,7 +40,7 @@ await page.pdf({
   format: 'A4', printBackground: true, preferCSSPageSize: true,
   displayHeaderFooter: true,
   headerTemplate: '<span></span>',
-  footerTemplate: '<div style="width:100%;font-size:8px;color:#a3a3a3;padding:0 14mm;display:flex;justify-content:space-between;font-family:sans-serif"><span>김보영 · 서비스 기획 포트폴리오</span><span><span class="pageNumber"></span> / <span class="totalPages"></span></span></div>',
+  footerTemplate: '<div style="width:100%;font-size:8px;color:#a3a3a3;padding:0 14mm;display:flex;justify-content:space-between;font-family:sans-serif"><span>김보영 · 서비스 기획·PM 포트폴리오</span><span><span class="pageNumber"></span> / <span class="totalPages"></span></span></div>',
 });
 await browser.close(); server.close();
 await import('./generate-pdf-manifest.mjs');

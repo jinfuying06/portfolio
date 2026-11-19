@@ -140,6 +140,13 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .skill-tags.hero-tags li { background: var(--surface); font-size: var(--fz-sm); font-weight: 600; color: var(--ink); }
 .hero-description { max-width: 40em; margin-top: 0; font-size: var(--fz-lg); line-height: 1.8; color: var(--text-2); }
 .skill-tags.hero-tags { margin-top: 28px; }
+/* 첫 화면 전용 페이지(index.html): 사이드바 없음 + 핵심 역량 목록 */
+.no-sidebar { --sidebar: 0px; }
+.skill-tags.hero-tags.is-under-title { margin: 0 0 24px; }
+.hero-strengths-label { margin-top: 32px; margin-bottom: 12px; font-size: var(--fz-sm); font-weight: 700; color: var(--ink); }
+.hero-strengths { display: grid; gap: 12px; max-width: 46em; }
+.hero-strengths li { padding-left: 14px; border-left: 2px solid var(--line-strong); font-size: var(--fz-sm); line-height: 1.7; color: var(--text-2); }
+.hero-strengths strong { display: block; color: var(--ink); }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
 .hero-actions[hidden] { display: none; }
 

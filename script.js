@@ -24,7 +24,9 @@
     });
   });
 
-  fetch('assets/pdf/latest.json', { cache: 'no-cache' })
+  // 하위 경로(/pm/)에서도 동작하도록 script.js 위치 기준으로 경로 계산
+  const base = new URL('.', document.currentScript.src).href;
+  fetch(`${base}assets/pdf/latest.json`, { cache: 'no-cache' })
     .then(response => {
       if (!response.ok) throw new Error(`PDF manifest: ${response.status}`);
       return response.json();
@@ -36,7 +38,7 @@
           && /^[^/\\]+\.pdf$/i.test(fileName);
         if (!valid) return;
 
-        link.href = `assets/pdf/${encodeURIComponent(fileName)}`;
+        link.href = `${base}assets/pdf/${encodeURIComponent(fileName)}`;
         link.removeAttribute('aria-disabled');
       });
     })
@@ -76,6 +78,7 @@
   let ticking = false;
   const spy = () => {
     ticking = false;
+    if (!sections.length) return; // 사이드바 없는 첫 화면 페이지
     const y = window.scrollY + window.innerHeight * 0.35;
     let current = '';
     sections.forEach(s => { if (s.offsetTop <= y) current = s.id; });
